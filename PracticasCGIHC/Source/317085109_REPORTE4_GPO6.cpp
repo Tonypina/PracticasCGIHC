@@ -206,7 +206,6 @@ int main() {
 
 		glBindVertexArray(VAO);
 		
-	
 		model = glm::rotate(model, glm::radians(hombro), glm::vec3(0.0f, 0.0, 1.0f)); //hombro
 		modelTemp = model = glm::translate(model, glm::vec3(1.5f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 1.0f));
@@ -350,25 +349,25 @@ int main() {
 		 rot += 0.18f;
 	 if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
 		 rot -= 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) && (hombro < 80.0f))
 		 hombro += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS) && (hombro > -80.0f))
 		 hombro -= 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS) && (codo < 0.0f))
 		 codo += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) && (codo > -135.0f))
 		 codo -= 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS) && (muneca < 90.0f))
 		 muneca += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) && (muneca > -180.0f))
 		 muneca -= 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS) && (dedo1 < 15.0f))
 		 dedo1 += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) && (dedo1 > -90.0f))
 		 dedo1 -= 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS) && (dedo2 < 0.0f))
 		 dedo2 += 0.18f;
-	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+	 if ((glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) && (dedo2 > -95.0f))
 		 dedo2 -= 0.18f;
  }
 

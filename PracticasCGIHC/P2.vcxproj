@@ -149,11 +149,12 @@
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\317085109_PRACTICA4_GPO6.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Shader\core.frag" />
     <None Include="Shader\core.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\317085109_PRACTICA4_GPO6.cpp" />
+    <ClCompile Include="Source\317085109_REPORTE4_GPO6.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
