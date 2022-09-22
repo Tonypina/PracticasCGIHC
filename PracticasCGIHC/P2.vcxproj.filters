@@ -34,8 +34,5 @@
     <ClCompile Include="Source\317085109_REPORTE4_GPO6.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\317085109_PRACTICA4_GPO6.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
