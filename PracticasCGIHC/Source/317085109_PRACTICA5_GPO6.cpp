@@ -40,6 +40,9 @@ bool firstMouse = true;
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 
+// Animación
+float rot = 0.0f;
+bool isOpening = true;
 
 
 int main( )
@@ -91,9 +94,11 @@ int main( )
     glEnable( GL_DEPTH_TEST );
     
     // Setup and compile our shaders
-    Shader shader( "Shaders/modelLoading.vs", "Shaders/modelLoading.frag" );
+    Shader shader( "Shader/modelLoading.vs", "Shader/modelLoading.frag" );
     
     // Load models
+    Model poke_top((char*)"Model/Pokeball/pokearriba.obj");
+    Model poke_bottom((char*)"Model/Pokeball/pokeabajo.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -123,6 +128,15 @@ int main( )
         // Draw the loaded model
         glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        
+        model = glm::mat4(1);
+        model = glm::rotate(model, glm::radians(rot), glm::vec3(1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        poke_top.Draw(shader);
+        
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        poke_bottom.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
@@ -157,7 +171,22 @@ void DoMovement( )
         camera.ProcessKeyboard( RIGHT, deltaTime );
     }
 
-   
+    if ( keys[GLFW_KEY_SPACE] ) {
+
+        if (rot <= -90.0f) {
+            isOpening = false;
+
+        } else if (rot >= 0.0f) {
+            isOpening = true;
+        }
+
+        if (isOpening) {
+            rot -= 0.1f;
+        } else {
+            rot += 0.1f;
+        }
+
+    }
 }
 
 // Is called whenever a key is pressed/released via GLFW
@@ -167,8 +196,8 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
     {
         glfwSetWindowShouldClose(window, GL_TRUE);
     }
-    
-    if ( key >= 0 && key < 1024 )
+
+    if ( key >= 0 && key < 1024 && key != 32 )
     {
         if ( action == GLFW_PRESS )
         {
@@ -180,7 +209,19 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
         }
     }
 
- 
+    if ( key == GLFW_KEY_SPACE ) {
+        if ( action == GLFW_PRESS ) {
+
+            if ( keys[key] ) {
+                
+                keys[key] = false;
+            
+            } else {
+            
+                keys[key] = true;
+            }
+        }
+    }
 
  
 }
