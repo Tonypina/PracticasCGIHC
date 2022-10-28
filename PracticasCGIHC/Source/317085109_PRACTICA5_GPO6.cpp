@@ -212,14 +212,7 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
     if ( key == GLFW_KEY_SPACE ) {
         if ( action == GLFW_PRESS ) {
 
-            if ( keys[key] ) {
-                
-                keys[key] = false;
-            
-            } else {
-            
-                keys[key] = true;
-            }
+            keys[key] = !keys[key];
         }
     }
 
