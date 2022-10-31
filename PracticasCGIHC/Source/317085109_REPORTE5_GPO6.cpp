@@ -97,8 +97,7 @@ int main( )
     Shader shader( "Shader/modelLoading.vs", "Shader/modelLoading.frag" );
     
     // Load models
-    Model poke_top((char*)"Model/Pokeball/pokearriba.obj");
-    Model poke_bottom((char*)"Model/Pokeball/pokeabajo.obj");
+    Model Mechanic_Arm((char*)"Model/Mechanic_Arm/Mechanic_Arm.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -130,13 +129,9 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         
         model = glm::mat4(1);
-        model = glm::rotate(model, glm::radians(rot), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        poke_top.Draw(shader);
+        Mechanic_Arm.Draw(shader);
         
-        model = glm::mat4(1);
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        poke_bottom.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
